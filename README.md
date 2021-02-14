@@ -15,6 +15,7 @@ In my spare time, I like all about Family and the outdoors, always with my wife 
 📫 How to reach me:
 
 [![LinkedIn](./img/linkedIn.png)](https://www.linkedin.com/in/josesanchezcapo/)
+[![twitter](./img/twitter.png)](https://twitter.com/JoseSanchezCapo)
 
 
 
