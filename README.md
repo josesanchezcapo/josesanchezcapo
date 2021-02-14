@@ -1,11 +1,25 @@
 <p align="center"><img width=300px src="img/dev.png"></p>
-<p>My Name is Jose...
+<h1 align="center">Jose Sanchez-Capo</h1>
 
-I'm a NetSuite Architect / Administrator, BI Developer, Software Developer, Technical Consultant
+
+<p>Hi!!!
+
+I'm a NetSuite Architect / Administrator, Software Developer
 
 I'm a Hands-on, results-oriented professional, with over 20 years of experience. Upstanding record of professional and personal achievements. Strong leadership; The "go-to" person that serves as the bridge between the organization goals and available technologies.
 
-In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level. I am very excited for the bootcamp, and I'm looking forward to my next projects using JavaScript.</p>
+In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level.
+
+![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+🔭 I’m currently working on several projects but more exiting and finishing my fullstack develpment bootcamp, using Node , React and Mongodb.
+
+📫 How to reach me:
+
+[![LinkedIn](./img/linkedIn.png)](https://www.linkedin.com/in/josesanchezcapo/)
+
+
 
 
 <!--
