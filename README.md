@@ -14,7 +14,7 @@ In my spare time, I like all about Family and the outdoors, always with my wife 
 
 
 👯  Check my resume:  
-https://josesanchezcapo.github.io/bootcamp-porfolio/
+https://josesanchezcapo.github.io/josesanchezcapo/
 
 📫 How to reach me:
 
