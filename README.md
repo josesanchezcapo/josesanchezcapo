@@ -1,5 +1,11 @@
 
-<p align="center"><img width=60% src="img/jscMain.png"></p>
+<p>My Name is Jose...
+
+I'm a NetSuite Architect / Administrator, BI Developer, Software Developer, Technical Consultant
+
+I'm a Hands-on, results-oriented professional, with over 20 years of experience. Upstanding record of professional and personal achievements. Strong leadership; The "go-to" person that serves as the bridge between the organization goals and available technologies.
+
+In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level. I am very excited for the bootcamp, and I'm looking forward to my next projects using JavaScript.</p>
 
 
 <!--
