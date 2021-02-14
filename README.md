@@ -13,8 +13,8 @@ In my spare time, I like all about Family and the outdoors, always with my wife 
 🔭 I’m currently working on several projects but more exiting and finishing my fullstack develpment bootcamp, using Node , React and Mongodb.
 
 
-👯  Check my resume:  
-https://josesanchezcapo.github.io/josesanchezcapo/
+👯  Check my [![resume]](https://josesanchezcapo.github.io/bootcamp-porfolio/resume.html)
+
 
 📫 How to reach me:
 
