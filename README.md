@@ -1,4 +1,4 @@
-<p align="center"><img width=12.5% src="img/dev.png"></p>
+<p align="center"><img width=300px src="img/dev.png"></p>
 <p>My Name is Jose...
 
 I'm a NetSuite Architect / Administrator, BI Developer, Software Developer, Technical Consultant
