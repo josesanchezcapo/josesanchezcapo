@@ -4,9 +4,9 @@
 
 <p>Hi!!!
 
-I'm a NetSuite Architect / Administrator, Software Developer
+I'm a NetSuite Administrator / Software Developer
 
-I'm a Hands-on, results-oriented professional, with over 20 years of experience. Upstanding record of professional and personal achievements. Strong leadership; The "go-to" person that serves as the bridge between the organization goals and available technologies.
+NetSuite Administrator / Javascript developer with over 15 years of extensive experience in diverse technologies, focused on the past five years on the design, development, and implementation of multiples solutions and integrations (Dell Boomi, Celigo) within NetSuite. Additional, development of BI solutions using Power BI or Tableau. Knowledge in SQL, C#, Javascript, Node.js, and React. 
 
 In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level.
 
