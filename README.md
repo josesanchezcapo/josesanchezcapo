@@ -4,7 +4,7 @@
 
 <p>Hi!!!
 
-I'm a Software Engineer / NetSuite Developer  with over 15 years of extensive experience in diverse technologies, focused on the past five years on the design, development, and implementation of multiples solutions and integrations (Dell Boomi, Celigo) within NetSuite. Additional, development of BI solutions using Power BI or Tableau. Knowledge in SQL, C#, HTML, CSS, JavaScript, SuiteScript, Node.js, React, Vue.js and Swift.
+I'm a Software Engineer / NetSuite Developer  with over 15 years of extensive experience in diverse technologies, focused on the past five years on the design, development, and implementation of multiples solutions and integrations (Dell Boomi, Celigo) within NetSuite. Additional, development of BI solutions using Power BI and Tableau. Knowledge in SQL, C#, HTML, CSS, JavaScript, SuiteScript, Node.js, React, Vue.js and Swift.
 
 In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level.
 
