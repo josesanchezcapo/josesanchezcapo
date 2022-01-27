@@ -8,10 +8,7 @@ I'm a Software Engineer / NetSuite Administrator / Javascript developer with ove
 
 Living a life of adventures. Mountain bike enthusiast, Providing hope one line of code at a time.
 
-/* 👯  Check my [![resume]](https://josesanchezcapo.github.io/bootcamp-porfolio/resume.html) */
-
-
-📫 How to reach me:
+How to reach me:
 
 [![LinkedIn](./img/linkedIn.png)](https://www.linkedin.com/in/josesanchezcapo/)
 [![twitter](./img/twitter.png)](https://twitter.com/JoseSanchezCapo)
