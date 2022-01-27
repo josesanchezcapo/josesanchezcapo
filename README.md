@@ -2,11 +2,11 @@
 <h1 align="center">Jose Sanchez-Capo</h1>
 
 
-<p>Hi!!!
+<p>
 
-I'm a Software Engineer / NetSuite Developer  with over 15 years of extensive experience in diverse technologies, focused on the past five years on the design, development, and implementation of multiples solutions and integrations (Dell Boomi, Celigo) within NetSuite. Additional, development of BI solutions using Power BI and Tableau. Knowledge in SQL, C#, HTML, CSS, JavaScript, SuiteScript, Node.js, React, Vue.js and Swift.
+I'm a Software Engineer / NetSuite Administrator / Javascript developer with over 15 years of extensive experience in diverse technologies, focused on the past five years on the design, development, and implementation of multiples solutions and integrations (Dell Boomi, Celigo) within NetSuite. Additional, development of BI solutions using Power BI or Tableau. Knowledge in SQL, C#, Javascript, Node.js, and React.
 
-In my spare time, I like all about Family and the outdoors, always with my wife & son Chris. I love new experiences and engage in new projects, at the personal and work level.
+Living a life of adventures. Mountain bike enthusiast, Providing hope one line of code at a time.
 
 👯  Check my [![resume]](https://josesanchezcapo.github.io/bootcamp-porfolio/resume.html)
 
@@ -15,8 +15,6 @@ In my spare time, I like all about Family and the outdoors, always with my wife 
 
 [![LinkedIn](./img/linkedIn.png)](https://www.linkedin.com/in/josesanchezcapo/)
 [![twitter](./img/twitter.png)](https://twitter.com/JoseSanchezCapo)
-
-
 
 
 <!--
