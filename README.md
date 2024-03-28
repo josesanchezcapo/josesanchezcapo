@@ -15,5 +15,5 @@ Embracing a life of adventure, I'm not only a fervent mountain bike enthusiast b
 
 ### How to Reach Me
 [![LinkedIn](./img/linkedIn.png)](https://www.linkedin.com/in/josesanchezcapo/)
-[![Twitter](./img/twitter.png)]([https://twitter.com/JoseSanchezCapo](https://twitter.com/JSCNomadicCoder)
+[![Twitter](./img/twitter.png)](https://twitter.com/JSCNomadicCoder)
 </p>
