@@ -63,20 +63,6 @@ From leveraging the power of cloud services to creating engaging mobile applicat
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-![Jose's GitHub Stats](https://github-readme-stats.vercel.app/api?username=josesanchezcapo&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=7c3aed&icon_color=06b6d4&text_color=e2e8f0)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=josesanchezcapo&layout=compact&theme=tokyonight&hide_border=true&bg_color=0a0a0f&title_color=7c3aed&text_color=e2e8f0)
-
-![GitHub Streak](https://streak-stats.demolab.com?user=josesanchezcapo&theme=tokyonight&hide_border=true&background=0a0a0f&ring=7c3aed&fire=06b6d4&currStreakLabel=e2e8f0)
-
-</div>
-
----
-
 ## 🤝 Let's Connect
 
 <div align="center">
