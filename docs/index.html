@@ -1,57 +1,689 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose Sanchez-Capo · Nomad Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #10101a;
+      --card: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --accent1: #7c3aed;
+      --accent2: #06b6d4;
+      --accent3: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --glow1: rgba(124,58,237,0.35);
+      --glow2: rgba(6,182,212,0.3);
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    html { scroll-behavior: smooth; }
 
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
+    /* ── CANVAS STARS ── */
+    #stars-canvas {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
 
-    <title>JSC:My Resume</title>
+    /* ── FLOATING BLOBS ── */
+    .blob {
+      position: fixed; border-radius: 50%; filter: blur(80px);
+      pointer-events: none; z-index: 0; opacity: 0.45;
+      animation: blobFloat 12s ease-in-out infinite alternate;
+    }
+    .blob1 { width: 520px; height: 520px; background: var(--accent1); top: -120px; left: -100px; animation-duration: 14s; }
+    .blob2 { width: 400px; height: 400px; background: var(--accent2); bottom: -80px; right: -80px; animation-duration: 10s; }
+    .blob3 { width: 300px; height: 300px; background: var(--accent3); top: 40%; left: 50%; animation-duration: 16s; }
 
+    @keyframes blobFloat {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(30px,-40px) scale(1.08); }
+      100% { transform: translate(-20px,20px) scale(0.95); }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(10,10,15,0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown 0.6s ease both;
+    }
+    @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .nav-logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.1rem; font-weight: 500;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      letter-spacing: 2px;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      transform: scaleX(0); transition: transform 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 2rem 4rem;
+    }
+
+    .hero-avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      border: 3px solid transparent;
+      background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                  linear-gradient(135deg, var(--accent1), var(--accent2)) border-box;
+      object-fit: cover; margin-bottom: 1.8rem;
+      animation: avatarPop 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;
+      box-shadow: 0 0 40px var(--glow1), 0 0 80px var(--glow2);
+    }
+    @keyframes avatarPop {
+      from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+      to   { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.3rem 1rem; border-radius: 99px;
+      background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.35);
+      font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--accent1);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.6s ease 0.5s both;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.4)} }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 0.5rem;
+      animation: fadeUp 0.6s ease 0.6s both;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent1) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ── TYPEWRITER ── */
+    .typewriter {
+      font-family: 'Fira Code', monospace;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--accent2); margin-bottom: 1.5rem;
+      min-height: 1.8em;
+      animation: fadeUp 0.6s ease 0.7s both;
+    }
+    .typewriter span::after {
+      content: '|'; animation: blink 0.7s step-end infinite;
+      color: var(--accent1);
+    }
+    @keyframes blink { 50% { opacity: 0 } }
+
+    .hero-desc {
+      max-width: 680px; font-size: 1.05rem; color: var(--muted);
+      line-height: 1.75; margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s ease 0.8s both;
+    }
+
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;
+      animation: fadeUp 0.6s ease 0.9s both;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.75rem 1.8rem; border-radius: 99px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-3px); filter: brightness(1.15); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent1), #9d60f8);
+      color: #fff;
+      box-shadow: 0 4px 24px var(--glow1);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 36px var(--glow1); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); box-shadow: 0 0 16px var(--glow2); }
+    .btn-coffee {
+      background: linear-gradient(135deg, #ff813f, #ffb347);
+      color: #fff; box-shadow: 0 4px 24px rgba(255,130,63,0.4);
+    }
+    .btn-coffee:hover { box-shadow: 0 8px 36px rgba(255,130,63,0.6); }
+
+    @keyframes fadeUp { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* ── SCROLL INDICATOR ── */
+    .scroll-indicator {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: var(--muted); font-size: 0.75rem; animation: fadeUp 1s ease 1.5s both;
+    }
+    .scroll-indicator .mouse {
+      width: 22px; height: 36px; border: 2px solid var(--border); border-radius: 11px;
+      display: flex; justify-content: center; padding-top: 6px;
+    }
+    .scroll-indicator .mouse::before {
+      content: ''; width: 4px; height: 8px; background: var(--accent2);
+      border-radius: 2px; animation: scrollWheel 1.5s ease infinite;
+    }
+    @keyframes scrollWheel { 0%,100% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(10px); opacity: 0; } }
+
+    /* ── SECTION SHARED ── */
+    section { position: relative; z-index: 1; padding: 6rem 2rem; }
+    .section-header {
+      text-align: center; margin-bottom: 3.5rem;
+    }
+    .section-label {
+      font-family: 'Fira Code', monospace; font-size: 0.8rem;
+      color: var(--accent2); letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 2rem 1.8rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      animation: fadeUp 0.5s ease both;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent1);
+      box-shadow: 0 8px 32px var(--glow1);
+    }
+    .skill-icon {
+      font-size: 2.2rem; margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .skill-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .skill-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── TECH PILLS ── */
+    #tech { padding-top: 5rem; padding-bottom: 5rem; }
+    .tech-wrapper { max-width: 900px; margin: 0 auto; }
+    .tech-row {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 1.1rem; border-radius: 99px;
+      font-size: 0.82rem; font-weight: 500;
+      background: var(--card); border: 1px solid var(--border);
+      transition: all 0.25s; cursor: default;
+    }
+    .pill:hover {
+      background: rgba(124,58,237,0.15);
+      border-color: var(--accent1); color: #fff;
+      transform: scale(1.06); box-shadow: 0 0 12px var(--glow1);
+    }
+
+    /* ── ABOUT / STATS ── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; max-width: 1000px; margin: 0 auto; align-items: center;
+    }
+    .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; font-size: 1rem; }
+    .about-text p strong { color: var(--text); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.4rem; text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 6px 24px var(--glow2); }
+    .stat-num {
+      font-size: 2.2rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent2), var(--accent1));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* ── CONNECT ── */
+    #connect { text-align: center; }
+    .connect-card {
+      max-width: 640px; margin: 0 auto;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 28px; padding: 3.5rem 2.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 60px rgba(124,58,237,0.1), 0 0 120px rgba(6,182,212,0.06);
+    }
+    .connect-card p { color: var(--muted); margin-bottom: 2rem; line-height: 1.7; }
+    .connect-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+    /* ── SOCIALS ── */
+    .social-bar {
+      display: flex; gap: 1.2rem; justify-content: center; margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); font-size: 1.15rem; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .social-link:hover {
+      transform: translateY(-4px) scale(1.1);
+      color: #fff; border-color: var(--accent1);
+      box-shadow: 0 6px 20px var(--glow1);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 2.5rem 1rem;
+      border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem;
+    }
+    footer span { color: var(--accent1); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── CURSOR GLOW ── */
+    .cursor-glow {
+      position: fixed; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 0; transform: translate(-50%,-50%);
+      transition: left 0.08s, top 0.08s;
+    }
+
+    /* ── GLITCH ── */
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute; top: 0; left: 0;
+      background: linear-gradient(135deg, #fff, var(--accent2), var(--accent1));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      width: 100%;
+    }
+    .glitch::before {
+      left: 2px; clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      animation: glitch1 4s infinite steps(1);
+    }
+    .glitch::after {
+      left: -2px; clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      animation: glitch2 4s infinite steps(1);
+    }
+    @keyframes glitch1 {
+      0%,94%,100% { transform: none; opacity: 0; }
+      95% { transform: translate(-3px,1px) skewX(2deg); opacity: 0.8; }
+      97% { transform: translate(3px,-1px); opacity: 0.6; }
+    }
+    @keyframes glitch2 {
+      0%,94%,100% { transform: none; opacity: 0; }
+      96% { transform: translate(3px,2px) skewX(-2deg); opacity: 0.7; }
+      98% { transform: translate(-3px,-2px); opacity: 0.5; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <!-- Main Navbar-->
+<!-- Cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
 
-    <header>
+<!-- Background blobs -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
 
-    </header>
+<!-- Star canvas -->
+<canvas id="stars-canvas"></canvas>
 
-    <!-- Main Container -->
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">&lt;JSC /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tech">Tech</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
 
-    <div class="container">
+<!-- HERO -->
+<section class="hero">
+  <img src="../img/dev.png" alt="Jose Sanchez-Capo" class="hero-avatar" />
+  <div class="hero-badge"><span class="dot"></span> Open to new projects</div>
+  <h1>
+    <span class="gradient-text glitch" data-text="Jose Sanchez-Capo">Jose Sanchez-Capo</span>
+  </h1>
+  <div class="typewriter"><span id="typed-text"></span></div>
+  <p class="hero-desc">
+    Freelance Consultant Developer crafting <strong>scalable cloud solutions</strong>,
+    immersive <strong>mobile experiences</strong>, and elegant <strong>web applications</strong>.
+    AWS &amp; Flutter specialist, nomad by nature. Let's build something extraordinary.
+  </p>
+  <div class="hero-cta">
+    <a href="https://www.linkedin.com/in/josesanchezcapo/" target="_blank" class="btn btn-primary">
+      <i class="fab fa-linkedin"></i> Connect on LinkedIn
+    </a>
+    <a href="https://www.buymeacoffee.com/nomaddeveloper" target="_blank" class="btn btn-coffee">
+      <span>☕</span> Buy Me a Coffee
+    </a>
+    <a href="https://github.com/josesanchezcapo" target="_blank" class="btn btn-secondary">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="mouse"></div>
+    <span>scroll</span>
+  </div>
+</section>
 
-        <!-- Display My Resume-->
-        <div class="">
-            <iframe src="./Assets/documents/Resume_Jose_Sanchez_Capo.pdf"
-                style="width: 1200px; height: 1000px; margin-top: 30px  ;"></iframe>
-        </div>
-
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <div class="section-label">// expertise</div>
+    <h2 class="section-title">What I Build</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal" style="animation-delay:0.1s">
+      <div class="skill-icon"><i class="fab fa-aws"></i></div>
+      <h3>AWS Solutions Architecture</h3>
+      <p>Designing scalable, secure cloud infrastructures with Lambda, DynamoDB, CloudFront, S3, API Gateway and more.</p>
     </div>
-
+    <div class="skill-card reveal" style="animation-delay:0.2s">
+      <div class="skill-icon"><i class="fas fa-mobile-screen"></i></div>
+      <h3>Mobile Development</h3>
+      <p>Crafting beautiful cross-platform apps with Flutter & Firebase — smooth UX from concept to App Store.</p>
     </div>
+    <div class="skill-card reveal" style="animation-delay:0.3s">
+      <div class="skill-icon"><i class="fab fa-js"></i></div>
+      <h3>JavaScript / TypeScript</h3>
+      <p>Modern frontend & backend magic with React, Node.js, and the full JS ecosystem. Fast, interactive, scalable.</p>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.4s">
+      <div class="skill-icon"><i class="fab fa-python"></i></div>
+      <h3>Python Development</h3>
+      <p>Backend services, automation, and data pipelines using Django, Flask, and serverless Python on AWS.</p>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.5s">
+      <div class="skill-icon"><i class="fas fa-store"></i></div>
+      <h3>E-commerce &amp; Shopify</h3>
+      <p>Custom Shopify apps, theme development, and seamless platform integrations that convert visitors into customers.</p>
+    </div>
+    <div class="skill-card reveal" style="animation-delay:0.6s">
+      <div class="skill-icon"><i class="fas fa-database"></i></div>
+      <h3>NetSuite / ERP</h3>
+      <p>Deep NetSuite expertise — SuiteScript, SuiteTalk, and workflow automation to streamline business operations.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Main Footer-->
+<!-- TECH PILLS -->
+<section id="tech">
+  <div class="section-header reveal">
+    <div class="section-label">// stack</div>
+    <h2 class="section-title">Technologies I Love</h2>
+  </div>
+  <div class="tech-wrapper">
+    <div class="tech-row reveal">
+      <span class="pill"><i class="fab fa-aws"></i> AWS Lambda</span>
+      <span class="pill"><i class="fab fa-aws"></i> DynamoDB</span>
+      <span class="pill"><i class="fab fa-aws"></i> S3</span>
+      <span class="pill"><i class="fab fa-aws"></i> CloudFront</span>
+      <span class="pill"><i class="fab fa-aws"></i> API Gateway</span>
+    </div>
+    <div class="tech-row reveal">
+      <span class="pill">🐦 Flutter</span>
+      <span class="pill">🔥 Firebase</span>
+      <span class="pill"><i class="fab fa-react"></i> React</span>
+      <span class="pill"><i class="fab fa-node-js"></i> Node.js</span>
+      <span class="pill"><i class="fab fa-js"></i> TypeScript</span>
+    </div>
+    <div class="tech-row reveal">
+      <span class="pill"><i class="fab fa-python"></i> Python</span>
+      <span class="pill">🌶️ Django</span>
+      <span class="pill">⚗️ Flask</span>
+      <span class="pill"><i class="fab fa-shopify"></i> Shopify</span>
+      <span class="pill">📦 NetSuite</span>
+      <span class="pill"><i class="fab fa-docker"></i> Docker</span>
+    </div>
+  </div>
+</section>
 
-    <footer class="myfooter">
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <div class="section-label">// about me</div>
+    <h2 class="section-title">The Nomad Developer</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm <strong>Jose Sanchez-Capo</strong> — a passionate freelance consultant who turns complex technical challenges into elegant, impactful solutions.</p>
+      <p>Whether architecting <strong>AWS infrastructure</strong> that scales to millions, shipping a polished <strong>Flutter app</strong>, or tuning a <strong>Shopify storefront</strong> for conversions — I bring both depth and speed to every project.</p>
+      <p>I'm a nomad at heart: adaptable, global-minded, and always chasing the next interesting problem. If you have one, let's talk.</p>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-num" data-target="10">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="50">0</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="6">0</div>
+        <div class="stat-label">Core Expertise Areas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-label">% Remote Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Add font awesome icons -->
-        <a href="https://github.com/josesanchezcapo" target="_blank" class="fa fa-github"></a>
-        <a href="https://twitter.com/josesanchezcapo" target="_blank" class="fa fa-twitter"></a>
-        <a href="https://www.linkedin.com/in/josesanchezcapo/" target="_blank" class="fa fa-linkedin"></a>
+<!-- CONNECT -->
+<section id="connect">
+  <div class="connect-card reveal">
+    <div class="section-label">// let's collaborate</div>
+    <h2 class="section-title" style="margin-bottom:1rem">Got a Project? 🚀</h2>
+    <p>I'm always open to exciting opportunities — AWS projects, mobile apps, web platforms, or anything that needs a sharp developer. Reach out and let's make something awesome together.</p>
+    <div class="connect-btns">
+      <a href="https://www.linkedin.com/in/josesanchezcapo/" target="_blank" class="btn btn-primary">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://www.buymeacoffee.com/nomaddeveloper" target="_blank" class="btn btn-coffee">
+        ☕ Buy Me a Coffee
+      </a>
+      <a href="https://github.com/josesanchezcapo" target="_blank" class="btn btn-secondary">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+    <div class="social-bar">
+      <a href="https://github.com/josesanchezcapo" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/josesanchezcapo/" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://twitter.com/josesanchezcapo" target="_blank" class="social-link" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.buymeacoffee.com/nomaddeveloper" target="_blank" class="social-link" title="Buy Me a Coffee" style="font-size:1.3rem">☕</a>
+    </div>
+  </div>
+</section>
 
-    </footer>
+<!-- FOOTER -->
+<footer>
+  <p>Built with <span>♥</span> by Jose Sanchez-Capo &nbsp;·&nbsp; Nomad Developer · 2026</p>
+</footer>
 
+<script>
+  /* ── STARS ── */
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  function resize() { canvas.width = innerWidth; canvas.height = innerHeight; }
+  function createStars() {
+    stars = [];
+    for (let i = 0; i < 180; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.4 + 0.2,
+        o: Math.random(),
+        s: Math.random() * 0.4 + 0.1,
+        d: Math.random() > 0.5 ? 1 : -1
+      });
+    }
+  }
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    stars.forEach(s => {
+      s.o += s.s * 0.01 * s.d;
+      if (s.o > 1 || s.o < 0.1) s.d *= -1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(drawStars);
+  }
+  window.addEventListener('resize', () => { resize(); createStars(); });
+  resize(); createStars(); drawStars();
 
+  /* ── CURSOR GLOW ── */
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+
+  /* ── TYPEWRITER ── */
+  const phrases = [
+    'AWS Solutions Architect',
+    'Mobile Developer (Flutter)',
+    'JavaScript / Python Engineer',
+    'Shopify & E-commerce Expert',
+    'Nomad Developer 🌍',
+    'Building cool things ✨'
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  const el = document.getElementById('typed-text');
+  function type() {
+    const phrase = phrases[pi];
+    if (!deleting) {
+      el.textContent = phrase.slice(0, ++ci);
+      if (ci === phrase.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    }
+    setTimeout(type, deleting ? 45 : 75);
+  }
+  type();
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── COUNT UP NUMBERS ── */
+  const numObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const suffix = target === 100 ? '%' : '+';
+      let count = 0;
+      const step = Math.ceil(target / 60);
+      const interval = setInterval(() => {
+        count = Math.min(count + step, target);
+        el.textContent = count + suffix;
+        if (count >= target) clearInterval(interval);
+      }, 28);
+      numObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => numObserver.observe(el));
+
+  /* ── SKILL CARD STAGGER ── */
+  document.querySelectorAll('.skill-card').forEach((card, i) => {
+    card.style.animationDelay = (i * 0.1) + 's';
+  });
+
+  /* ── PARTICLE BURST on coffee button ── */
+  document.querySelector('.btn-coffee').addEventListener('click', () => {
+    for (let i = 0; i < 16; i++) {
+      const p = document.createElement('div');
+      p.style.cssText = `position:fixed;z-index:9999;pointer-events:none;
+        width:8px;height:8px;border-radius:50%;
+        background:hsl(${Math.random()*60+20},100%,65%);
+        left:50%;top:50%;
+        animation:burst${i} 0.8s ease-out forwards`;
+      const tx = (Math.random()-0.5)*200, ty = (Math.random()-0.5)*200;
+      const style = document.createElement('style');
+      style.textContent = `@keyframes burst${i}{to{transform:translate(${tx}px,${ty}px);opacity:0}}`;
+      document.head.appendChild(style);
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(), 850);
+    }
+  });
+</script>
 </body>
-
 </html>
